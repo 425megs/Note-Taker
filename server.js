@@ -27,6 +27,12 @@ app.get('/api/notes', function (req, res) {
   return res.json(notes)
 });
 
+app.get('*', (req, res) => 
+  res.send(
+    `Make a request to http://localhost:${PORT}/api/notes or http://localhost:${PORT}/notes`
+  )
+);
+
 app.post('/api/notes', function (req, res) {
   fs.readFile("./db/db.json", "utf-8", (err, data) => {
     if (err) {
